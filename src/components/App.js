@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import HeroCard from './HeroCard'
+import Search from './Search'
 
 function App() {
   const [heroes, setHeroes] = useState([])
   const [isLoaded, setIsLoaded] = useState(false)
+  const [search, setSearch] = useState("")
 
   useEffect(() => {
     fetch("https://api.epicsevendb.com/hero")
@@ -23,14 +25,18 @@ function App() {
         setIsLoaded(true)
       })
   }, [])
-
-  const heroesArray = heroes.map(hero => <HeroCard key={hero.name} hero={hero}/>)
+  
+  const searchedHeroes = heroes.filter(hero => hero.name.toLowerCase().includes(search.toLowerCase()))
+  const heroesArray = searchedHeroes.map(hero => <HeroCard key={hero.name} hero={hero}/>)
 
   if (!isLoaded) return <h1> Loading </h1>
   return (
-    <div className="App">
-        <h1> Epic 7 RTA Draft Simulator</h1>
-        <div>
+    <div className="app">
+        <div className="draft-container">
+          <p> Draft container</p>
+        </div>
+        <div className="hero-container">
+          <Search search={search} setSearch={setSearch}/>
           {heroesArray}
         </div>
     </div>
