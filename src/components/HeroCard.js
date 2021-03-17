@@ -1,4 +1,6 @@
 import React from 'react'
+import Draggable, {DraggableCore} from 'react-draggable';
+
 
 function HeroCard({ hero }) {
     const { name, rarity, role, assets } = hero

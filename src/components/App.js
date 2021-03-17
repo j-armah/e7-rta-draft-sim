@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import HeroCard from './HeroCard'
-import Search from './Search'
+import React, { useEffect, useState } from 'react';
+import Draggable, {DraggableCore} from 'react-draggable';
+import HeroCard from './HeroCard';
+import Search from './Search';
 
 function App() {
   const [heroes, setHeroes] = useState([])
@@ -25,7 +26,7 @@ function App() {
         setIsLoaded(true)
       })
   }, [])
-  
+
   const searchedHeroes = heroes.filter(hero => hero.name.toLowerCase().includes(search.toLowerCase()))
   const heroesArray = searchedHeroes.map(hero => <HeroCard key={hero.name} hero={hero}/>)
 
