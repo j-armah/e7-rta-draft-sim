@@ -49,3 +49,24 @@ code {
 .hero-card img{
   
 }
+
+.draft-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.your-draft {
+  width: 100%;
+  height: 100%;
+}
+
+.enemy-draft {
+  width: 100%;
+  height: 100%;
+}
+
+.draft-box {
+  border: 1px solid;
+  height: 15%;
+  width: 100%;
+}

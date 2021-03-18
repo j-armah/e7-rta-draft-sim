@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Draggable, {DraggableCore} from 'react-draggable';
+import Draft from './Draft';
 import HeroCard from './HeroCard';
 import Search from './Search';
 
@@ -34,7 +35,7 @@ function App() {
   return (
     <div className="app">
         <div className="draft-container">
-          <p> Draft container</p>
+          <Draft />
         </div>
         <div className="hero-container">
           <Search search={search} setSearch={setSearch}/>
