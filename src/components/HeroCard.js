@@ -1,23 +1,27 @@
 import React from 'react'
-import Draggable, {DraggableCore} from 'react-draggable';
+import { useDrag } from 'react-dnd';
+import { ItemTypes } from '../utils/items'
+// import Draggable, {DraggableCore} from 'react-draggable';
 
 
 function HeroCard({ hero }) {
     const { name, rarity, role, assets } = hero
+    
 
+    console.log(ItemTypes.CARD)
+    const [{ isDragging }, drag] = useDrag({
+		type: ItemTypes.CARD,
+		id: hero.id,
+		collect: monitor => ({
+			isDragging: !!monitor.isDragging(),
+		}),
+	});
     return (
-        <Draggable
-            axis="x"
-            handle=".handle"
-            defaultPosition={{x: 0, y: 0}}
-            position={null}
-            grid={[25, 25]}
-            scale={1}>
-            <div className="hero-card">
+
+            <div className="hero-card" ref={drag}>
                 <h5>{name}</h5>
                 <img src={assets.thumbnail} />
             </div>
-        </Draggable>
         
     )
 }
