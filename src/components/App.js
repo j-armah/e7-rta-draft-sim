@@ -3,16 +3,27 @@ import React, { useEffect, useState } from 'react';
 import Draft from './Draft';
 import HeroCard from './HeroCard';
 import Search from './Search';
-import { Grid } from '@material-ui/core'
+import { Grid, Box } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+
 
 const CardComponent = (hero) => {
   return <HeroCard key={hero.id} hero={hero}/>
 }
 
+const useStyles = makeStyles((theme) => ({
+  heroBox: {
+    width: "100%",
+    height: "95vh",
+    overflow: "auto"
+  }
+}))
+
 function App() {
   const [heroes, setHeroes] = useState([])
   const [isLoaded, setIsLoaded] = useState(false)
   const [search, setSearch] = useState("")
+  const classes = useStyles()
 
   const handleDrop = () => {
 
@@ -51,7 +62,9 @@ function App() {
         </Grid>
         <Grid container item xs={3} >
           <Search search={search} setSearch={setSearch}/>
-          {heroesArray}
+          <Box className={classes.heroBox} id="hero-container">
+            {heroesArray}
+          </Box>
         </Grid>
     </Grid>
   );

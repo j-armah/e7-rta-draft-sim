@@ -42,7 +42,7 @@ code {
   margin: 10px;
 }
 
-.hero-container::-webkit-scrollbar {
+#hero-container::-webkit-scrollbar {
   display: none;
 }
 
