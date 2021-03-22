@@ -3,13 +3,26 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
 import { DndProvider } from 'react-dnd';
-
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from "@material-ui/core/CssBaseline";
+import rawTheme from './theme.json'
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
+// const darkTheme = createMuiTheme({
+//   palette: {
+//     type: 'dark',
+//   },
+// });
+
+const theme = createMuiTheme(rawTheme)
+
 ReactDOM.render(
-  <DndProvider backend={HTML5Backend} >
-    <App />
-  </DndProvider>,
+  <MuiThemeProvider theme={theme}>
+    <CssBaseline />
+    <DndProvider backend={HTML5Backend} >
+      <App />
+    </DndProvider>
+  </MuiThemeProvider>,
   document.getElementById('root')
 );
 

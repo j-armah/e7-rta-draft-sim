@@ -1,27 +1,32 @@
 import React from 'react'
 import { useDrop } from 'react-dnd'
 import DraftBox from './DraftBox'
+import { Grid, Button, Box } from '@material-ui/core'
 
 function Draft() {
     return (
-        <div className="draft-container">
-            <div className="your-draft">
-                Your Draft
+        <Grid container spacing={1} className="draft-container">
+            <Grid item container xs={6}>
+                <Box>
+                    <Button > First Pick </Button>
+                </Box>
                 <DraftBox />
                 <DraftBox />
                 <DraftBox />
                 <DraftBox />
                 <DraftBox />
-            </div>
-            <div className="enemy-draft">
-                Enemy Draft
+            </Grid>
+            <Grid item container xs={6}>
+                <Box>
+                    <Button > First Pick </Button>
+                </Box>
                 <DraftBox />
                 <DraftBox />
                 <DraftBox />
                 <DraftBox />
                 <DraftBox />
-            </div>
-        </div>
+            </Grid>
+        </Grid>
     )
 }
 

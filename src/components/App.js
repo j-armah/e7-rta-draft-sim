@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import Draggable, {DraggableCore} from 'react-draggable';
+// import Draggable, {DraggableCore} from 'react-draggable';
 import Draft from './Draft';
 import HeroCard from './HeroCard';
 import Search from './Search';
+import { Grid } from '@material-ui/core'
 
 const CardComponent = (hero) => {
-  return <HeroCard key={hero.id.toString()} hero={hero}/>
+  return <HeroCard key={hero.id} hero={hero}/>
 }
 
 function App() {
   const [heroes, setHeroes] = useState([])
   const [isLoaded, setIsLoaded] = useState(false)
   const [search, setSearch] = useState("")
+
+  const handleDrop = () => {
+
+  }
 
   useEffect(() => {
     fetch("https://api.epicsevendb.com/hero")
@@ -35,20 +40,20 @@ function App() {
 
 
 
-  // const searchedHeroes = heroes.filter(hero => hero.name.toLowerCase().includes(search.toLowerCase()))
-  // const heroesArray = searchedHeroes.map( CardComponent )
+  const searchedHeroes = heroes.filter(hero => hero.name.toLowerCase().includes(search.toLowerCase()))
+  const heroesArray = searchedHeroes.map( CardComponent )
 
   if (!isLoaded) return <h1> Loading </h1>
   return (
-    <div className="app">
-        <div className="draft-container">
+    <Grid container className="app">
+        <Grid container item xs={9} >
           <Draft />
-        </div>
-        <div className="hero-container">
+        </Grid>
+        <Grid container item xs={3} >
           <Search search={search} setSearch={setSearch}/>
-          {heroes.map( CardComponent )}
-        </div>
-    </div>
+          {heroesArray}
+        </Grid>
+    </Grid>
   );
 }
 
