@@ -7,8 +7,6 @@ import { ItemTypes } from '../utils/items'
 function HeroCard({ hero }) {
     const { name, rarity, role, assets } = hero
     
-
-    console.log(ItemTypes.CARD)
     const [{ isDragging }, drag] = useDrag({
 		type: ItemTypes.CARD,
 		id: hero.id,

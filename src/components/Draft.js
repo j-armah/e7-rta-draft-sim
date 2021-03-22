@@ -1,43 +1,25 @@
 import React from 'react'
+import { useDrop } from 'react-dnd'
+import DraftBox from './DraftBox'
 
 function Draft() {
     return (
         <div className="draft-container">
             <div className="your-draft">
                 Your Draft
-                <div className="draft-box">
-                    
-                </div>
-                <div className="draft-box">
-                    
-                </div>
-                <div className="draft-box">
-                    
-                </div>
-                <div className="draft-box">
-                    
-                </div>
-                <div className="draft-box">
-                    
-                </div>
+                <DraftBox />
+                <DraftBox />
+                <DraftBox />
+                <DraftBox />
+                <DraftBox />
             </div>
             <div className="enemy-draft">
                 Enemy Draft
-                <div className="draft-box">
-                    
-                </div>
-                <div className="draft-box">
-                    
-                </div>
-                <div className="draft-box">
-                    
-                </div>
-                <div className="draft-box">
-                    
-                </div>
-                <div className="draft-box">
-                    
-                </div>
+                <DraftBox />
+                <DraftBox />
+                <DraftBox />
+                <DraftBox />
+                <DraftBox />
             </div>
         </div>
     )
