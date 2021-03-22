@@ -9,16 +9,17 @@ function HeroCard({ hero }) {
     
     const [{ isDragging }, drag] = useDrag({
 		type: ItemTypes.CARD,
-		id: hero.id,
+		item: { hero },
 		collect: monitor => ({
 			isDragging: !!monitor.isDragging(),
 		}),
 	});
+    
     return (
 
             <div className="hero-card" ref={drag}>
                 <h5>{name}</h5>
-                <img src={assets.thumbnail} />
+                <img src={assets.icon} />
             </div>
         
     )
