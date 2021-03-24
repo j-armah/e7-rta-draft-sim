@@ -53,23 +53,19 @@ function App() {
 
 
   const searchedHeroes = heroes.filter(hero => hero.name.toLowerCase().includes(search.toLowerCase()))
-  const heroesArray = searchedHeroes.map( CardComponent )
-  
-
-  
-    console.log(heroes[0])
-    
-  
+  const heroesArray = searchedHeroes.map( CardComponent )    
   
 
   const filterDrop = (unit) => {
-    console.log(unit)
-    setHeroes(heroes.filter(hero => hero.name != unit.name))
+    // console.log(unit)
+    setHeroes(heroes.filter(hero => hero.name !== unit.name))
   }
 
   const add = (unit) => {
     console.log(unit)
     let newArr = [...heroes, unit]
+
+    console.log(newArr.length)
 
     for (let i=0; i < newArr.length; i++) {
       let index = i
@@ -85,13 +81,36 @@ function App() {
     setHeroes(newArr)
   }
 
+  const addAndFilter = (unit, removedUnit) => {
+    console.log(unit, removedUnit)
+    let newArr = [...heroes, unit]
+
+    console.log(newArr.length)
+
+    for (let i=0; i < newArr.length; i++) {
+      let index = i
+
+      while (index > 0 && newArr[index - 1].id >= newArr[index].id) {
+        const tmp = newArr[index - 1]
+        newArr[index - 1] = newArr[index]
+        newArr[index] = tmp
+        index -= 1
+      }
+    }
+
+    newArr = newArr.filter(hero => hero.name !== removedUnit.name)
+
+    setHeroes(newArr)
+  }
+
   // iSort(heroes)
+  console.log(heroes.length)
 
   if (!isLoaded) return <h1> Loading </h1>
   return (
     <Grid container className="app">
         <Grid container item xs={9} className={classes.draftBox}>
-          <Draft filterDrop={filterDrop} add={add}/>
+          <Draft filterDrop={filterDrop} add={add} addAndFilter={addAndFilter}/>
         </Grid>
         <Grid container item xs={3} >
           <Search search={search} setSearch={setSearch}/>

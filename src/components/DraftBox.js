@@ -16,19 +16,27 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-function DraftBox({ filterDrop, add }) {
+function DraftBox({ filterDrop, add, addAndFilter }) {
     const [hero, setHero] = useState(null)
     const [isBanned, setIsBanned] = useState(false)
     const classes = useStyles()
 
     const handleDrop = (unit) => {
-        setHero(unit)
-        filterDrop(unit)
+        if (!!hero) {
+            console.log('dropped on occupied box', hero)
+            addAndFilter(hero, unit)
+            setHero(unit)
+        } else {
+            setHero(unit)   
+            filterDrop(unit)
+        }
+        
     }
 
     const handleRemove = (unit) => {
         console.log(unit)
         setHero(null)
+        setIsBanned(false)
         add(unit)
     }
 
@@ -43,7 +51,6 @@ function DraftBox({ filterDrop, add }) {
     return (
         <Box 
             className={classes.box}
-            onClick={!!hero ? () => handleRemove(hero) : null}
             ref={drop} 
             style={{
                 backgroundColor: isBanned ? 'rgba(173, 56, 56, 0.5)' : null
@@ -51,7 +58,7 @@ function DraftBox({ filterDrop, add }) {
                 {!!hero ?
                     <>
                         <h5>{hero.name}</h5>
-                        <img src={hero.assets.thumbnail} />
+                        <img src={hero.assets.thumbnail} alt={hero.name} onClick={!!hero ? () => handleRemove(hero) : null}/>
                         <Button onClick={() => setIsBanned(!isBanned)}> BAN </Button>
                     </>
                     
