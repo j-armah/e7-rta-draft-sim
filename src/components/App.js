@@ -54,17 +54,44 @@ function App() {
 
   const searchedHeroes = heroes.filter(hero => hero.name.toLowerCase().includes(search.toLowerCase()))
   const heroesArray = searchedHeroes.map( CardComponent )
+  
+
+  
+    console.log(heroes[0])
+    
+  
+  
 
   const filterDrop = (unit) => {
     console.log(unit)
     setHeroes(heroes.filter(hero => hero.name != unit.name))
   }
 
+  const add = (unit) => {
+    console.log(unit)
+    let newArr = [...heroes, unit]
+
+    for (let i=0; i < newArr.length; i++) {
+      let index = i
+
+      while (index > 0 && newArr[index - 1].name.toLowerCase().localeCompare(newArr[index].name.toLowerCase()) === 1) {
+        const tmp = newArr[index - 1]
+        newArr[index - 1] = newArr[index]
+        newArr[index] = tmp
+        index -= 1
+      }
+    }
+
+    setHeroes(newArr)
+  }
+
+  // iSort(heroes)
+
   if (!isLoaded) return <h1> Loading </h1>
   return (
     <Grid container className="app">
         <Grid container item xs={9} className={classes.draftBox}>
-          <Draft filterDrop={filterDrop}/>
+          <Draft filterDrop={filterDrop} add={add}/>
         </Grid>
         <Grid container item xs={3} >
           <Search search={search} setSearch={setSearch}/>

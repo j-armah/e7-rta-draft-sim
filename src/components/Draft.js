@@ -6,14 +6,14 @@ import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 
 
-function Draft({ filterDrop }) {
+function Draft({ filterDrop, add }) {
     const [isChecked, setIsChecked] = useState(true)
     const [isCheckedE, setIsCheckedE] = useState(false)
 
     const draftBoxes = []
 
     for (let i=0; i < 5; i++) {
-        draftBoxes.push(<DraftBox filterDrop={filterDrop}/>)
+        draftBoxes.push(<DraftBox filterDrop={filterDrop} add={add}/>)
     }
 
     return (

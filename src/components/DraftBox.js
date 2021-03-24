@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-function DraftBox({ filterDrop }) {
+function DraftBox({ filterDrop, add }) {
     const [hero, setHero] = useState(null)
     const [isBanned, setIsBanned] = useState(false)
     const classes = useStyles()
@@ -29,6 +29,7 @@ function DraftBox({ filterDrop }) {
     const handleRemove = (unit) => {
         console.log(unit)
         setHero(null)
+        add(unit)
     }
 
     const [{ isOver }, drop] = useDrop({
