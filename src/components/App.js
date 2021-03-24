@@ -14,8 +14,11 @@ const CardComponent = (hero) => {
 const useStyles = makeStyles((theme) => ({
   heroBox: {
     width: "100%",
-    height: "95vh",
+    height: "93vh",
     overflow: "auto"
+  },
+  draftBox: {
+    padding: "20px",
   }
 }))
 
@@ -25,9 +28,7 @@ function App() {
   const [search, setSearch] = useState("")
   const classes = useStyles()
 
-  const handleDrop = () => {
-
-  }
+  
 
   useEffect(() => {
     fetch("https://api.epicsevendb.com/hero")
@@ -54,11 +55,16 @@ function App() {
   const searchedHeroes = heroes.filter(hero => hero.name.toLowerCase().includes(search.toLowerCase()))
   const heroesArray = searchedHeroes.map( CardComponent )
 
+  const filterDrop = (unit) => {
+    console.log(unit)
+    setHeroes(heroes.filter(hero => hero.name != unit.name))
+  }
+
   if (!isLoaded) return <h1> Loading </h1>
   return (
     <Grid container className="app">
-        <Grid container item xs={9} >
-          <Draft />
+        <Grid container item xs={9} className={classes.draftBox}>
+          <Draft filterDrop={filterDrop}/>
         </Grid>
         <Grid container item xs={3} >
           <Search search={search} setSearch={setSearch}/>

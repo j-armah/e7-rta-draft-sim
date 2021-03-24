@@ -6,9 +6,15 @@ import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 
 
-function Draft() {
+function Draft({ filterDrop }) {
     const [isChecked, setIsChecked] = useState(true)
     const [isCheckedE, setIsCheckedE] = useState(false)
+
+    const draftBoxes = []
+
+    for (let i=0; i < 5; i++) {
+        draftBoxes.push(<DraftBox filterDrop={filterDrop}/>)
+    }
 
     return (
         <Grid container spacing={1} className="draft-container">
@@ -23,11 +29,8 @@ function Draft() {
                         label="First Pick"
                     />
                 </Box>
-                <DraftBox />
-                <DraftBox />
-                <DraftBox />
-                <DraftBox />
-                <DraftBox />
+                {draftBoxes}
+                
             </Grid>
             <Grid item container xs={6}>
                 <Box>
@@ -40,11 +43,7 @@ function Draft() {
                         label="First Pick"
                     />
                 </Box>
-                <DraftBox />
-                <DraftBox />
-                <DraftBox />
-                <DraftBox />
-                <DraftBox />
+                {draftBoxes}
             </Grid>
         </Grid>
     )
