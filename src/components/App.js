@@ -35,9 +35,9 @@ function App() {
       .then(resp => resp.json())
       .then(data => {
         console.log(data.results)
-        const dataArray = data.results.map(hero => {
+        const dataArray = data.results.map((hero, index) => {
           return {
-            id: hero.id,
+            id: index,
             name: hero.name, 
             rarity: hero.rarity,
             role: hero.role,
@@ -74,7 +74,7 @@ function App() {
     for (let i=0; i < newArr.length; i++) {
       let index = i
 
-      while (index > 0 && newArr[index - 1].name.toLowerCase().localeCompare(newArr[index].name.toLowerCase()) === 1) {
+      while (index > 0 && newArr[index - 1].id >= newArr[index].id) {
         const tmp = newArr[index - 1]
         newArr[index - 1] = newArr[index]
         newArr[index] = tmp
