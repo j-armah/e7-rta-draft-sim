@@ -4,6 +4,7 @@ import DraftBox from './DraftBox'
 import { Grid, Button, Box } from '@material-ui/core'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Preban from './Preban'
 
 
 function Draft({ filterDrop, add, addAndFilter }) {
@@ -29,8 +30,15 @@ function Draft({ filterDrop, add, addAndFilter }) {
                         label="First Pick"
                     />
                 </Box>
+                <Grid item xs={12}>
+                    <Box display="flex" justifyContent="center">
+                        Preban
+                    </Box>
+                    <Box display="flex" justifyContent="center">
+                        <Preban filterDrop={filterDrop} add={add} addAndFilter={addAndFilter}/>
+                    </Box>
+                </Grid>
                 {draftBoxes}
-                
             </Grid>
             <Grid item container xs={6}>
                 <Box>
@@ -43,6 +51,14 @@ function Draft({ filterDrop, add, addAndFilter }) {
                         label="First Pick"
                     />
                 </Box>
+                <Grid item xs={12}>
+                    <Box display="flex" justifyContent="center">
+                        Preban
+                    </Box>
+                    <Box display="flex" justifyContent="center">
+                        <Preban filterDrop={filterDrop} add={add} addAndFilter={addAndFilter}/>
+                    </Box>
+                </Grid>
                 {draftBoxes}
             </Grid>
         </Grid>

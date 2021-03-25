@@ -42,6 +42,9 @@ function App() {
             rarity: hero.rarity,
             role: hero.role,
             assets: hero.assets,
+            attribute: hero.attribute,
+            rarity: hero.rarity,
+            role: hero.role,
           }
         })
         setHeroes(dataArray)
@@ -109,6 +112,11 @@ function App() {
   if (!isLoaded) return <h1> Loading </h1>
   return (
     <Grid container className="app">
+        <Grid item xs={12}>
+          <Box display="flex" alignItems="center" justifyContent="center" height="100px">
+            E7 RTA Draft Simulator
+          </Box>
+        </Grid>
         <Grid container item xs={9} className={classes.draftBox}>
           <Draft filterDrop={filterDrop} add={add} addAndFilter={addAndFilter}/>
         </Grid>

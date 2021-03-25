@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, { useState } from 'react'
 import { useDrop } from 'react-dnd'
 import { ItemTypes } from '../utils/items'
 import { Box, Button, Divider } from '@material-ui/core'
@@ -7,16 +7,16 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
     box: {
         display: "flex",
-        justifyContent: "space-between",
+        justifyContent: "center",
         width: "100%",
-        height: "15%",
+        height: "100px",
         border: "1px solid black",
         borderRadius: "20px",
-        backgroundColor: "rgba(255,255,255, 0.1)"
+        // backgroundColor: "rgba(255,255,255, 0.1)"
     }
 }))
 
-function DraftBox({ filterDrop, add, addAndFilter }) {
+function Preban({ filterDrop, add, addAndFilter }) {
     const [hero, setHero] = useState(null)
     const [isBanned, setIsBanned] = useState(false)
     const classes = useStyles()
@@ -53,19 +53,22 @@ function DraftBox({ filterDrop, add, addAndFilter }) {
             className={classes.box}
             ref={drop} 
             style={{
-                backgroundColor: isBanned ? 'rgba(173, 56, 56, 0.5)' : null
-            }}>
+                backgroundColor: !!hero ? 'rgba(173, 56, 56, 0.5)' : null
+            }}
+            >
+            <Box>
                 {!!hero ?
                     <>
-                        <h5>{hero.name}</h5>
+                        {/* <h5>{hero.name}</h5> */}
                         <img src={hero.assets.thumbnail} alt={hero.name} onClick={!!hero ? () => handleRemove(hero) : null}/>
-                        <Button onClick={() => setIsBanned(!isBanned)}> {isBanned ? "UNBAN" : "BAN"} </Button>
                     </>
                     
 
                 : null}
+            </Box>
+                
         </Box>
     )
 }
 
-export default DraftBox
+export default Preban
