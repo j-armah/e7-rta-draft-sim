@@ -67,7 +67,7 @@ function App() {
           }
         })
         setHeroes(dataArray)
-        console.log(dataArray)
+        // console.log(dataArray)
         setIsLoaded(true)
       })
   }, [isCleared])
