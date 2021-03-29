@@ -53,7 +53,7 @@ function App() {
     fetch("https://api.epicsevendb.com/hero")
       .then(resp => resp.json())
       .then(data => {
-        console.log(data.results)
+        // console.log(data.results)
         const dataArray = data.results.map((hero, index) => {
           return {
             id: index,

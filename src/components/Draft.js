@@ -36,7 +36,7 @@ function Draft({ filterDrop, add, addAndFilter, clearDraft }) {
     //     // ])
     // }
 
-    console.log(draftBoxes)
+    // console.log(draftBoxes)
 
     return (
         <Grid container spacing={1} className="draft-container">
