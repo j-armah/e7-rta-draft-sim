@@ -7,15 +7,36 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Preban from './Preban'
 
 
-function Draft({ filterDrop, add, addAndFilter }) {
+function Draft({ filterDrop, add, addAndFilter, clearDraft }) {
     const [isChecked, setIsChecked] = useState(true)
     const [isCheckedE, setIsCheckedE] = useState(false)
-
+    // const [draftBoxes, setDraftBoxes] = useState(
+    //     [
+    //         <DraftBox filterDrop={filterDrop} add={add} addAndFilter={addAndFilter}/>,
+    //         <DraftBox filterDrop={filterDrop} add={add} addAndFilter={addAndFilter}/>,
+    //         <DraftBox filterDrop={filterDrop} add={add} addAndFilter={addAndFilter}/>,
+    //         <DraftBox filterDrop={filterDrop} add={add} addAndFilter={addAndFilter}/>,
+    //         <DraftBox filterDrop={filterDrop} add={add} addAndFilter={addAndFilter}/>
+    //     ]
+    // )
     const draftBoxes = []
-
     for (let i=0; i < 5; i++) {
         draftBoxes.push(<DraftBox filterDrop={filterDrop} add={add} addAndFilter={addAndFilter}/>)
     }
+    
+
+    // const clearDraft = () => {
+    //     console.log('clear')
+    //     // setDraftBoxes([
+    //     //     <DraftBox filterDrop={filterDrop} add={add} addAndFilter={addAndFilter}/>,
+    //     //     <DraftBox filterDrop={filterDrop} add={add} addAndFilter={addAndFilter}/>,
+    //     //     <DraftBox filterDrop={filterDrop} add={add} addAndFilter={addAndFilter}/>,
+    //     //     <DraftBox filterDrop={filterDrop} add={add} addAndFilter={addAndFilter}/>,
+    //     //     <DraftBox filterDrop={filterDrop} add={add} addAndFilter={addAndFilter}/>
+    //     // ])
+    // }
+
+    console.log(draftBoxes)
 
     return (
         <Grid container spacing={1} className="draft-container">
@@ -41,9 +62,12 @@ function Draft({ filterDrop, add, addAndFilter }) {
                 {draftBoxes}
             </Grid>
             <Grid item xs={1}>
-                <Box display="flex" justifyContent="center" alignItems="center" height="100%">
+                <Box display="flex" justifyContent="center" alignItems="center" height="90%">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Street_Fighter_VS_logo.png" alt="vs" width="100%"/>
                 </Box>
+                {/* <Box display="flex" justifyContent="center" alignItems="center">
+                    <Button onClick={() => clearDraft()}> CLEAR </Button>
+                </Box> */}
             </Grid>
             <Grid item container xs={5}>
                 <Box>

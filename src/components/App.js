@@ -5,6 +5,7 @@ import HeroCard from './HeroCard';
 import Search from './Search';
 import { Grid, Box, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
+import { render } from '@testing-library/react';
 
 
 const CardComponent = (hero) => {
@@ -34,6 +35,8 @@ function App() {
   const [heroes, setHeroes] = useState([])
   const [isLoaded, setIsLoaded] = useState(false)
   const [search, setSearch] = useState("")
+  const [isCleared, setIsCleared] = useState(false)
+  const forceUpdate = React.useState()[1].bind(null, {})
   const classes = useStyles()
 
   
@@ -59,7 +62,7 @@ function App() {
         console.log(dataArray)
         setIsLoaded(true)
       })
-  }, [])
+  }, [isCleared])
 
 
 
@@ -114,8 +117,13 @@ function App() {
     setHeroes(newArr)
   }
 
+  
+  const clearDraft = () => {
+    forceUpdate()
+  }
+
   // iSort(heroes)
-  console.log(heroes.length)
+  // console.log(heroes.length)
 
   if (!isLoaded) return <h1> Loading </h1>
   return (
@@ -147,7 +155,7 @@ function App() {
           </Box>
         </Grid>
         <Grid container item xs={9} className={classes.draftBox}>
-          <Draft filterDrop={filterDrop} add={add} addAndFilter={addAndFilter}/>
+          <Draft filterDrop={filterDrop} add={add} addAndFilter={addAndFilter} clearDraft={clearDraft}/>
         </Grid>
         <Grid container item xs={3} >
           <Search search={search} setSearch={setSearch}/>
