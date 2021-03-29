@@ -19,7 +19,7 @@ function Draft({ filterDrop, add, addAndFilter }) {
 
     return (
         <Grid container spacing={1} className="draft-container">
-            <Grid item container xs={6}>
+            <Grid item container xs={5}>
                 <Box>
                     <FormControlLabel
                         control={
@@ -40,7 +40,12 @@ function Draft({ filterDrop, add, addAndFilter }) {
                 </Grid>
                 {draftBoxes}
             </Grid>
-            <Grid item container xs={6}>
+            <Grid item xs={1}>
+                <Box display="flex" justifyContent="center" alignItems="center" height="100%">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Street_Fighter_VS_logo.png" alt="vs" width="100%"/>
+                </Box>
+            </Grid>
+            <Grid item container xs={5}>
                 <Box>
                     <FormControlLabel
                         control={

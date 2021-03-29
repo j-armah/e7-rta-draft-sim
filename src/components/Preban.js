@@ -62,8 +62,6 @@ function Preban({ filterDrop, add, addAndFilter }) {
                         {/* <h5>{hero.name}</h5> */}
                         <img src={hero.assets.thumbnail} alt={hero.name} onClick={!!hero ? () => handleRemove(hero) : null}/>
                     </>
-                    
-
                 : null}
             </Box>
                 
