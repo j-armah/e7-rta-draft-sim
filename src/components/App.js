@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Draft from './Draft';
 import HeroCard from './HeroCard';
 import Search from './Search';
-import { Grid, Box } from '@material-ui/core'
+import { Grid, Box, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
 
@@ -19,6 +19,14 @@ const useStyles = makeStyles((theme) => ({
   },
   draftBox: {
     padding: "20px",
+  },
+  banner: {
+    height: "35vh",
+    // width: "100%",
+    backgroundSize: "100% auto",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: '0 35%',
+    zIndex: 0
   }
 }))
 
@@ -113,8 +121,29 @@ function App() {
   return (
     <Grid container className="app">
         <Grid item xs={12}>
-          <Box display="flex" alignItems="center" justifyContent="center" height="100px">
-            E7 RTA Draft Simulator
+          <Box 
+            display="flex" 
+            alignItems="center" 
+            justifyContent="center" 
+            className={classes.banner}
+            style={{
+              backgroundImage: 
+              `linear-gradient(
+                  rgba(38, 38, 38, 0.35),
+                  rgba(38, 38, 38, 0.35),
+                  rgba(38, 38, 38, 0.45),
+                  rgba(38, 38, 38, 0.55), 
+                  rgba(38, 38, 38, 0.75),
+                  rgba(38, 38, 38, 0.85),
+                  rgba(38, 38, 38, 0.95),   
+                  rgba(38, 38, 38, 1)
+              ),
+              url("https://preview.redd.it/lvdq21vpd1o51.jpg?width=2048&format=pjpg&auto=webp&s=b52cfdf5eb65e327391c26a809e6c883a9aaf438")`,
+          }}
+          >
+            <Box>
+              <Typography variant="h3">Epic Seven RTA Draft Simulator</Typography>
+            </Box>   
           </Box>
         </Grid>
         <Grid container item xs={9} className={classes.draftBox}>

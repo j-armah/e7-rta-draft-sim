@@ -56,11 +56,14 @@ function DraftBox({ filterDrop, add, addAndFilter }) {
                 backgroundColor: isBanned ? 'rgba(173, 56, 56, 0.5)' : null
             }}>
                 {!!hero ?
-                    <>
-                        <h5>{hero.name}</h5>
-                        <img src={hero.assets.thumbnail} alt={hero.name} onClick={!!hero ? () => handleRemove(hero) : null}/>
+                    <Box display="flex" justifyContent="space-between" width="100%" height="100%">
+                        <Box display="flex" justifyContent="center" alignItems="center" height="100%" mx={1}>{hero.name}</Box>
+                        {/* <Box height="100%"> */}
+                            <img src={hero.assets.thumbnail} alt={hero.name} onClick={!!hero ? () => handleRemove(hero) : null}/>
+                        {/* </Box> */}
+                        
                         <Button onClick={() => setIsBanned(!isBanned)}> {isBanned ? "UNBAN" : "BAN"} </Button>
-                    </>
+                    </Box>
                     
 
                 : null}
