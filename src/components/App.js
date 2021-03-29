@@ -5,7 +5,8 @@ import HeroCard from './HeroCard';
 import Search from './Search';
 import { Grid, Box, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import { render } from '@testing-library/react';
+import CircularProgress from '@material-ui/core/CircularProgress';
+// import { render } from '@testing-library/react';
 
 
 const CardComponent = (hero) => {
@@ -28,7 +29,14 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
     backgroundPosition: '0 35%',
     zIndex: 0
-  }
+  },
+  load: {
+    height: "100vh",
+    width: "100%"
+  },
+  loadBox: {
+    width: "100%"
+  },
 }))
 
 function App() {
@@ -125,7 +133,13 @@ function App() {
   // iSort(heroes)
   // console.log(heroes.length)
 
-  if (!isLoaded) return <h1> Loading </h1>
+  if (!isLoaded) return (
+    <Grid container className={classes.load}>
+      <Box display="flex" justifyContent="center" alignItems="center" className={classes.loadBox}>
+        <CircularProgress color="secondary" />
+      </Box>
+    </Grid>
+  ) 
   return (
     <Grid container className="app">
         <Grid item xs={12}>
