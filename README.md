@@ -1,5 +1,7 @@
 # E7 RTA Draft Simulator v1.0
 
+https://e7draftsim.netlify.app/
+
 
 ## How to Use
 
