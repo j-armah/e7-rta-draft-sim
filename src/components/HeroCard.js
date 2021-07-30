@@ -5,7 +5,7 @@ import { ItemTypes } from '../utils/items'
 
 
 function HeroCard({ hero }) {
-    const { name, rarity, role, assets } = hero
+    const { name, assets } = hero
     
     const [{ isDragging }, drag] = useDrag({
 		type: ItemTypes.CARD,
@@ -19,7 +19,7 @@ function HeroCard({ hero }) {
 
             <div className="hero-card" ref={drag}>
                 <h5>{name}</h5>
-                <img src={assets.icon} />
+                <img src={assets?.icon} />
             </div>
         
     )

@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
-import { useDrop } from 'react-dnd'
+// import { useDrop } from 'react-dnd'
 import DraftBox from './DraftBox'
-import { Grid, Button, Box } from '@material-ui/core'
+import { Grid, Box } from '@material-ui/core'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Preban from './Preban'
 
 
-function Draft({ filterDrop, add, addAndFilter, clearDraft }) {
+function Draft({ filterDrop, add, addAndFilter }) {
     const [isChecked, setIsChecked] = useState(true)
     const [isCheckedE, setIsCheckedE] = useState(false)
     // const [draftBoxes, setDraftBoxes] = useState(

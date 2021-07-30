@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useDrop } from 'react-dnd'
 import { ItemTypes } from '../utils/items'
-import { Box, Button, Divider } from '@material-ui/core'
+import { Box } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     box: {
         display: "flex",
         justifyContent: "center",
@@ -60,7 +60,7 @@ function Preban({ filterDrop, add, addAndFilter }) {
                 {!!hero ?
                     <>
                         {/* <h5>{hero.name}</h5> */}
-                        <img src={hero.assets.thumbnail} alt={hero.name} onClick={!!hero ? () => handleRemove(hero) : null}/>
+                        <img src={hero.assets?.thumbnail} alt={hero.name} onClick={!!hero ? () => handleRemove(hero) : null}/>
                     </>
                 : null}
             </Box>
