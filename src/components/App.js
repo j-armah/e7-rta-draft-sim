@@ -65,13 +65,17 @@ function App() {
             role: hero.role,
           }
         })
-        const customAdd = [
-          {
-          id: null,
-          name: "Straze",
+
+      const straze =
+        {
+          id: 999,
+          name: "Straze"
         }
-        ]
-        setHeroes([...dataArray, customAdd])
+        const ilynav = 
+        {id: 1000,
+        name: "Ilynav"}
+      dataArray.push(straze, ilynav)
+        setHeroes(dataArray)
         // console.log(dataArray)
         setIsLoaded(true)
       })
